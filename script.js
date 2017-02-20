@@ -30,3 +30,25 @@ function firstBranch (pet) {
     }
   }
 }
+
+function secondBranch (num, pet) {
+  var adopt = false
+  var clause = ''
+  if (num > 0.8) {
+    adopt = window.confirm('Turns out this ' + pet +
+     ' is part demon. 😈 \nPress OK to adopt anyway or CANCEL to run away!')
+     clause = 'demon'
+  } else if (num > 0.7) {
+    adopt = window.confirm('Wow what a great ' + pet + ' 👍 In order to adopt this one, you have to adopt 99 other' +
+     pet + 's\nPress OK to adopt or CANCEL if you changed your mind!')
+     clause = '100'
+  } else if (num > 0.4) {
+    adopt = window.confirm('This is the most perfect ' + pet +
+     ' I\'ve ever seen! 😇 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
+     clause = 'perfect'
+  } else {
+    adopt = window.confirm('You\'re going to have a fun time training your new baby ' + pet +
+     ' 👶 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
+     clause = 'baby'
+  }
+}
