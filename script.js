@@ -1,6 +1,3 @@
-//It should be impossible for an error to ever occur when playing your game, including handling for null/undefined where appropriate
-//At least one number value is collected and used in a comparison (don't forget to convert it into a number first)
-
 start()
 
 function start () {
@@ -35,17 +32,10 @@ function firstBranch (pet) {
 function age (num, pet) {
   var age = window.prompt('Please enter your age ')
   var redo
-  if (!age) {
-    redo = window.confirm('I need to confirm your age before you can adopt a pet.\nPress OK if you want to enter your age again or CANCEL if you don\'t!')
+  if (!age || isNaN(parseInt(age.trim()))) {
+    redo = window.confirm('I need to confirm your age before you can adopt a pet.\nPress OK if you want to start over or CANCEL if you don\'t!')
     if (redo) {
-      age(num, pet)
-    } else {
-      end(false, '', '', '')
-    }
-  } else if (isNaN(parseInt(age.trim()))) {
-    redo = window.confirm('The age you entered is not a number.\nPress OK if you want to enter your age again or CANCEL if you don\'t!')
-    if (redo) {
-      age(num, pet)
+      firstBranch (pet)
     } else {
       end(false, '', '', '')
     }
