@@ -20,7 +20,7 @@ function firstBranch (pet) {
     pet = pet.toLowerCase().trim()
     if (pet === 'dog' || pet === 'cat' || pet === 'rat' || pet === 'squirrel') {
       var randomNumber = Math.random()
-      secondBranch(randomNumber, pet)
+      age(randomNumber, pet)
     } else {
       var redo = window.confirm('Sorry we dont have any ' + pet + 's here!\nPress OK if you\'re interested in a dog, cat, rat, or squirrel or CANCEL if you\'re not!')
       if (redo) {
@@ -28,6 +28,34 @@ function firstBranch (pet) {
       } else {
         end(false, '', '', '')
       }
+    }
+  }
+}
+
+function age (num, pet) {
+  var age = window.prompt('Please enter your age ')
+  var redo
+  if (!age) {
+    redo = window.confirm('I need to confirm your age before you can adopt a pet.\nPress OK if you want to enter your age again or CANCEL if you don\'t!')
+    if (redo) {
+      age(num, pet)
+    } else {
+      end(false, '', '', '')
+    }
+  } else if (isNaN(parseInt(age.trim()))) {
+    redo = window.confirm('The age you entered is not a number.\nPress OK if you want to enter your age again or CANCEL if you don\'t!')
+    if (redo) {
+      age(num, pet)
+    } else {
+      end(false, '', '', '')
+    }
+  } else {
+    age = parseInt(age.trim())
+    if (age >= 18) {
+      alert('Great! ' + age + ' is over 18 so you are qualified to adopt a ' + pet)
+      secondBranch(num, pet)
+    } else {
+      alert('Unfortunately, ' + age + ' is too young to adopt a ' + pet + '\nCome back with an adult if you would like to try again!')
     }
   }
 }
@@ -65,7 +93,7 @@ function adoption (pet, clause) {
     alert('You didn\'t enter a name so we\'re calling your ' + pet + 'Cookie!')
     name = 'Cookie'
   } else {
-    name = name.toLowerCase().trim()
+    name = name.trim()
   }
   end(true, clause, name, pet)
 }
@@ -77,13 +105,13 @@ function end (adopted, clause, name, pet) {
   } else if (!adopted) {
     message += 'I can\'t believe you decided not to adopt '
     if (clause === 'demon') {
-      message += 'a demon ' + pet
+      message += 'a demon ' + pet + '!'
     } else if (clause === '100') {
-      message += '100 ' + pet + 's'
+      message += '100 ' + pet + 's' + '!'
     } else if (clause === 'perfect') {
-      message += 'the perfect ' + pet
+      message += 'the perfect ' + pet + '!'
     } else if (clause === 'baby') {
-      message += 'a tiny baby ' + pet
+      message += 'a tiny baby ' + pet + '!'
     }
     message += '\nCome back any time if you decide you want to try again!'
   } else {
