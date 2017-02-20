@@ -1,9 +1,5 @@
-//Use the prompt and confirm functions (each at least once) to collect choices from the user (the entire story will take place in dialog boxes, so your body element could actually be empty, apart from the script element to include your JavaScript)
-//Use if, else if, and else to branch the story, based on user choices
-//In at least one branch, there should be at least 3 choices for the user to make
 //It should be impossible for an error to ever occur when playing your game, including handling for null/undefined where appropriate
 //At least one number value is collected and used in a comparison (don't forget to convert it into a number first)
-//Don't get too carried away — it can be tempting to build a complex video game, but remember, you can always come back and build on this project later
 
 start()
 
@@ -17,8 +13,8 @@ function firstBranch (pet) {
     var redo = window.confirm('I didn\'t quite get that.\nPress OK if you\'re here to adopt or CANCEL if you\'re not!')
     if (redo) {
       start()
-    }else{
-      end()
+    } else {
+      end(false, '', '', '')
     }
   } else {
     pet = pet.toLowerCase().trim()
@@ -26,7 +22,12 @@ function firstBranch (pet) {
       var randomNumber = Math.random()
       secondBranch(randomNumber, pet)
     } else {
-      alert('Sorry we dont have any ' + pet + 's here!')
+      var redo = window.confirm('Sorry we dont have any ' + pet + 's here!\nPress OK if you\'re interested in a dog, cat, rat, or squirrel or CANCEL if you\'re not!')
+      if (redo) {
+        start()
+      } else {
+        end(false, '', '', '')
+      }
     }
   }
 }
@@ -37,18 +38,78 @@ function secondBranch (num, pet) {
   if (num > 0.8) {
     adopt = window.confirm('Turns out this ' + pet +
      ' is part demon. 😈 \nPress OK to adopt anyway or CANCEL to run away!')
-     clause = 'demon'
-  } else if (num > 0.7) {
+    clause = 'demon'
+  } else if (num > 0.6) {
     adopt = window.confirm('Wow what a great ' + pet + ' 👍 In order to adopt this one, you have to adopt 99 other' +
      pet + 's\nPress OK to adopt or CANCEL if you changed your mind!')
-     clause = '100'
+    clause = '100'
   } else if (num > 0.4) {
     adopt = window.confirm('This is the most perfect ' + pet +
      ' I\'ve ever seen! 😇 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
-     clause = 'perfect'
+    clause = 'perfect'
   } else {
     adopt = window.confirm('You\'re going to have a fun time training your new baby ' + pet +
      ' 👶 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
-     clause = 'baby'
+    clause = 'baby'
   }
+  if (adopt) {
+    adoption(pet, clause)
+  } else {
+    end(false, clause, '', pet)
+  }
+}
+
+function adoption (pet, clause) {
+  var name = window.prompt('What would you like to name your new pet? ')
+  if (!name) {
+    alert('You didn\'t enter a name so we\'re calling your ' + pet + 'Cookie!')
+    name = 'Cookie'
+  } else {
+    name = name.toLowerCase().trim()
+  }
+  end(true, clause, name, pet)
+}
+
+function end (adopted, clause, name, pet) {
+  var message = ''
+  if (!adopted && !clause) {
+    message = 'Bye! Come back any time if you decide you want to adopt!'
+  } else if (!adopted) {
+    message += 'I can\'t believe you decided not to adopt '
+    if (clause === 'demon') {
+      message += 'a demon ' + pet
+    } else if (clause === '100') {
+      message += '100 ' + pet + 's'
+    } else if (clause === 'perfect') {
+      message += 'the perfect ' + pet
+    } else if (clause === 'baby') {
+      message += 'a tiny baby ' + pet
+    }
+    message += '\nCome back any time if you decide you want to try again!'
+  } else {
+    message += 'CONGRATULATIONS on adopting '
+    if (clause === 'demon') {
+      message += name + ' the demon ' + pet + '. You are a brave soul!'
+    } else if (clause === '100') {
+      message += ': \n'
+      var i = 0
+      for (i = 1; i <= 100; i++) {
+        message += name + ' ' + i
+        if (i !== 100) {
+          message += ', '
+          if (i % 5 === 0) {
+            message += '\n'
+          }
+        } else {
+          message += '.'
+        }
+      }
+      message += '\n100 ' + pet + 's is going to be a handful!'
+    } else if (clause === 'perfect') {
+      message += name + ' the perfect ' + pet + '! Send me lots of pix!'
+    } else if (clause === 'baby') {
+      message += name + ' the tiny baby ' + pet + '! So cute!'
+    }
+  }
+  alert(message)
 }
