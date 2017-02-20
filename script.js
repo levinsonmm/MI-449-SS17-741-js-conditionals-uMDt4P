@@ -19,7 +19,7 @@ function firstBranch (pet) {
       var randomNumber = Math.random()
       age(randomNumber, pet)
     } else {
-      var redo = window.confirm('Sorry we dont have any ' + pet + 's here!\nPress OK if you\'re interested in a dog, cat, rat, or squirrel or CANCEL if you\'re not!')
+      redo = window.confirm('Sorry we dont have any ' + pet + 's here!\nPress OK if you\'re interested in a dog, cat, rat, or squirrel or CANCEL if you\'re not!')
       if (redo) {
         start()
       } else {
@@ -31,11 +31,10 @@ function firstBranch (pet) {
 
 function age (num, pet) {
   var age = window.prompt('Please enter your age ')
-  var redo
   if (!age || isNaN(parseInt(age.trim()))) {
-    redo = window.confirm('I need to confirm your age before you can adopt a pet.\nPress OK if you want to start over or CANCEL if you don\'t!')
+    var redo = window.confirm('I need to confirm your age before you can adopt a pet.\nPress OK if you want to start over or CANCEL if you don\'t!')
     if (redo) {
-      firstBranch (pet)
+      firstBranch(pet)
     } else {
       end(false, '', '', '')
     }
@@ -80,7 +79,7 @@ function secondBranch (num, pet) {
 function adoption (pet, clause) {
   var name = window.prompt('What would you like to name your new pet? ')
   if (!name) {
-    alert('You didn\'t enter a name so we\'re calling your ' + pet + 'Cookie!')
+    alert('You didn\'t enter a name so we\'re calling your ' + pet + ' Cookie!')
     name = 'Cookie'
   } else {
     name = name.trim()
