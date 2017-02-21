@@ -51,32 +51,32 @@ function age (num, pet) {
 
 function secondBranch (num, pet) {
   var adopt = false
-  var clause = ''
+  var situation = ''
   if (num > 0.8) {
     adopt = window.confirm('Turns out this ' + pet +
      ' is part demon. 😈 \nPress OK to adopt anyway or CANCEL to run away!')
-    clause = 'demon'
+    situation = 'demon'
   } else if (num > 0.6) {
     adopt = window.confirm('Wow what a great ' + pet + ' 👍 In order to adopt this one, you have to adopt 99 other ' +
      pet + 's\nPress OK to adopt or CANCEL if you changed your mind!')
-    clause = '100'
+    situation = '100'
   } else if (num > 0.4) {
     adopt = window.confirm('This is the most perfect ' + pet +
      ' I\'ve ever seen! 😇 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
-    clause = 'perfect'
+    situation = 'perfect'
   } else {
     adopt = window.confirm('You\'re going to have a fun time training your new baby ' + pet +
      ' 👶 \nPress OK to adopt or CANCEL if you\'re just here to waste my time!')
-    clause = 'baby'
+    situation = 'baby'
   }
   if (adopt) {
-    adoption(pet, clause)
+    adoption(pet, situation)
   } else {
-    end(false, clause, '', pet)
+    end(false, situation, '', pet)
   }
 }
 
-function adoption (pet, clause) {
+function adoption (pet, situation) {
   var name = window.prompt('What would you like to name your new pet? ')
   if (!name) {
     alert('You didn\'t enter a name so we\'re calling your ' + pet + ' Cookie!')
@@ -84,30 +84,30 @@ function adoption (pet, clause) {
   } else {
     name = name.trim()
   }
-  end(true, clause, name, pet)
+  end(true, situation, name, pet)
 }
 
-function end (adopted, clause, name, pet) {
+function end (adopted, situation, name, pet) {
   var message = ''
-  if (!adopted && !clause) {
+  if (!adopted && !situation) {
     message = 'Bye! Come back any time if you decide you want to adopt!'
   } else if (!adopted) {
     message += 'I can\'t believe you decided not to adopt '
-    if (clause === 'demon') {
+    if (situation === 'demon') {
       message += 'a demon ' + pet + '!'
-    } else if (clause === '100') {
+    } else if (situation === '100') {
       message += '100 ' + pet + 's' + '!'
-    } else if (clause === 'perfect') {
+    } else if (situation === 'perfect') {
       message += 'the perfect ' + pet + '!'
-    } else if (clause === 'baby') {
+    } else if (situation === 'baby') {
       message += 'a tiny baby ' + pet + '!'
     }
     message += '\nCome back any time if you decide you want to try again!'
   } else {
     message += 'CONGRATULATIONS on adopting '
-    if (clause === 'demon') {
+    if (situation === 'demon') {
       message += name + ' the demon ' + pet + '. You are a brave soul!'
-    } else if (clause === '100') {
+    } else if (situation === '100') {
       message += ': \n'
       var i = 0
       for (i = 1; i <= 100; i++) {
@@ -122,9 +122,9 @@ function end (adopted, clause, name, pet) {
         }
       }
       message += '\n100 ' + pet + 's is going to be a handful!'
-    } else if (clause === 'perfect') {
+    } else if (situation === 'perfect') {
       message += name + ' the perfect ' + pet + '! Send me lots of pix!'
-    } else if (clause === 'baby') {
+    } else if (situation === 'baby') {
       message += name + ' the tiny baby ' + pet + '! So cute!'
     }
   }
