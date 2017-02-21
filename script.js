@@ -40,16 +40,16 @@ function age (num, pet) {
     }
   } else {
     age = parseInt(age.trim())
-    //122 is the oldest confirmed age of a person
+    // 122 is the oldest confirmed age of a person
     if (age > 18 && age <= 122) {
-      alert('Great! ' + age + ' is over 18 so you are qualified to adopt a ' + pet)
+      alert('Great! ' + age + ' is over 18 so you are qualified to adopt a ' + pet + '!')
       secondBranch(num, pet)
-    } else if (age == 18) {
-      alert('Great! ' + age + ' is just old enough to adopt a ' + pet)
+    } else if (age === 18) {
+      alert('Great! ' + age + ' is just old enough to adopt a ' + pet + '!')
     } else if (age < 18 && age > 0) {
-      alert('Unfortunately, ' + age + ' is too young to adopt a ' + pet + '\nCome back with an adult if you would like to try again!')
+      alert('Unfortunately, ' + age + ' is too young to adopt a ' + pet + '!\nCome back with an adult if you would like to try again!')
     } else {
-      alert('Unfortunately, ' + age + ' is not a real age, so I cannot allow you to adopt a ' + pet + '\nCome back if you want to stop lying!')
+      alert('Unfortunately, ' + age + ' is not a real age, so I cannot allow you to adopt a ' + pet + ' because you are a liar!\nCome back if you want to stop lying!')
     }
   }
 }
