@@ -46,6 +46,7 @@ function age (num, pet) {
       secondBranch(num, pet)
     } else if (age === 18) {
       alert('Great! ' + age + ' is just old enough to adopt a ' + pet + '!')
+      secondBranch(num, pet)
     } else if (age < 18 && age > 0) {
       alert('Unfortunately, ' + age + ' is too young to adopt a ' + pet + '!\nCome back with an adult if you would like to try again!')
     } else {
