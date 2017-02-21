@@ -57,7 +57,7 @@ function secondBranch (num, pet) {
      ' is part demon. 😈 \nPress OK to adopt anyway or CANCEL to run away!')
     clause = 'demon'
   } else if (num > 0.6) {
-    adopt = window.confirm('Wow what a great ' + pet + ' 👍 In order to adopt this one, you have to adopt 99 other' +
+    adopt = window.confirm('Wow what a great ' + pet + ' 👍 In order to adopt this one, you have to adopt 99 other ' +
      pet + 's\nPress OK to adopt or CANCEL if you changed your mind!')
     clause = '100'
   } else if (num > 0.4) {
